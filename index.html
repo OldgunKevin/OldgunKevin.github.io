@@ -151,100 +151,89 @@
     }
 
     @media (max-width: 900px) {
+      .hero {
+        min-height: 100vh;
+        overflow: visible;
+        background-image: url("England.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
 
-  .hero {
-    min-height: 100vh;
-    overflow: hidden;
+      .nav {
+        display: none;
+      }
 
-    background-image: url("Spain.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
+      .title {
+        margin: 0;
+        padding: 52px 24px 0;
+        max-width: none;
+        background: transparent;
+        backdrop-filter: none;
+        border-radius: 0;
+        text-shadow:
+          0 3px 12px rgba(0,0,0,.42),
+          0 8px 25px rgba(0,0,0,.30);
+      }
 
-  .nav {
-    display: none;
-  }
+      .title h1 {
+        font-size: 52px;
+        line-height: .96;
+      }
 
-  .title {
-    margin: 0;
-    padding: 50px 25px 0;
-    max-width: none;
+      .subtitle {
+        margin-top: 20px;
+        font-size: 19px;
+        letter-spacing: 1px;
+      }
 
-    background: transparent;
-    backdrop-filter: none;
-    border-radius: 0;
+      .quote {
+        margin-top: 22px;
+        font-size: 15px;
+        line-height: 1.8;
+      }
 
-    text-shadow:
-      0 3px 12px rgba(0,0,0,.45),
-      0 8px 25px rgba(0,0,0,.35);
-  }
+      .quote-en {
+        margin-top: 10px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
 
-  .title h1 {
-    font-size: 58px;
-    line-height: 0.95;
-  }
+      .cards-wrap {
+        position: relative;
+        margin-top: 42vh;
+        padding: 0 18px 36px;
+      }
 
-  .subtitle {
-    margin-top: 22px;
-    font-size: 20px;
-    letter-spacing: 1px;
-  }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
 
-  .quote {
-    margin-top: 22px;
-    font-size: 16px;
-    line-height: 1.8;
-  }
+      .card {
+        min-height: 150px;
+        background: rgba(255,255,255,.08);
+        border: 1px solid rgba(255,255,255,.12);
+        backdrop-filter: blur(10px);
+        color: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,.16);
+      }
 
-  .quote-en {
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: 1.7;
-  }
+      .card h2 {
+        font-size: 30px;
+        color: white;
+      }
 
-  .cards-wrap {
-    position: relative;
-    margin-top: 42vh;
-    padding: 0 18px 36px;
-  }
+      .card p {
+        color: rgba(255,255,255,.92);
+        font-size: 16px;
+      }
 
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .card {
-    min-height: 150px;
-
-    background: rgba(255,255,255,.10);
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    backdrop-filter: blur(12px);
-
-    color: white;
-
-    box-shadow:
-      0 10px 30px rgba(0,0,0,.18);
-  }
-
-  .card h2 {
-    font-size: 30px;
-    color: white;
-  }
-
-  .card p {
-    color: rgba(255,255,255,.92);
-    font-size: 16px;
-  }
-
-  .footer {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-}
+      .footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
     }
   </style>
 </head>
