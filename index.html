@@ -7,105 +7,95 @@
 
   <style>
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: "PingFang SC", "Microsoft YaHei", Georgia, serif;
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #0f1712;
       color: #fff;
-      background: #111;
     }
 
     .hero {
       min-height: 100vh;
       position: relative;
       overflow: hidden;
-      background-image: url("England.jpg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-color: #06131a;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.08) 42%, rgba(0,0,0,0.70) 100%);
-      z-index: 1;
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.72) 100%),
+        url("England2.jpg");
+      background-size: cover;
+      background-position: center center;
     }
 
     .nav {
       position: relative;
       z-index: 2;
+      padding: 30px 56px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 30px 54px;
-      text-shadow: 0 3px 16px rgba(0,0,0,0.45);
+      text-shadow: 0 3px 16px rgba(0,0,0,.5);
     }
 
     .brand {
       font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-weight: 800;
+      letter-spacing: .3px;
     }
 
     .nav a {
       color: #fff;
       text-decoration: none;
-      margin-left: 24px;
+      margin-left: 22px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .center-title {
+    .title {
       position: relative;
       z-index: 2;
-      max-width: 920px;
-      margin: 10vh auto 0;
-      padding: 0 28px;
-      text-align: center;
-      text-shadow: 0 4px 22px rgba(0,0,0,0.45);
+      max-width: 900px;
+      margin: 13vh 0 0 8vw;
+      text-shadow: 0 5px 24px rgba(0,0,0,.55);
     }
 
-    .small {
-      font-size: 20px;
-      letter-spacing: 3px;
-      margin-bottom: 14px;
-    }
-
-    h1 {
+    .title h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 8vw, 96px);
-      line-height: 1;
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: .95;
     }
 
     .subtitle {
-      margin-top: 20px;
-      font-size: clamp(20px, 3vw, 34px);
-      font-weight: 700;
-      letter-spacing: 2px;
+      margin-top: 18px;
+      font-size: clamp(20px, 2.8vw, 34px);
+      font-weight: 800;
+      letter-spacing: 3px;
     }
 
     .quote {
-      margin: 26px auto 0;
-      max-width: 860px;
-      font-size: clamp(17px, 2vw, 24px);
-      line-height: 1.85;
-      font-weight: 600;
+      margin-top: 26px;
+      max-width: 760px;
+      font-size: clamp(17px, 1.7vw, 23px);
+      line-height: 1.8;
+      font-weight: 700;
     }
 
-    .bottom-panel {
+    .quote-en {
+      margin-top: 12px;
+      max-width: 760px;
+      font-size: clamp(14px, 1.3vw, 18px);
+      line-height: 1.7;
+      opacity: .92;
+    }
+
+    .cards-wrap {
       position: absolute;
       z-index: 2;
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 0 54px 42px;
+      padding: 0 56px 44px;
     }
 
     .cards {
@@ -117,27 +107,24 @@
     }
 
     .card {
-      min-height: 150px;
+      text-decoration: none;
+      color: white;
+      min-height: 152px;
       padding: 22px;
       border-radius: 24px;
-      background: rgba(0,0,0,0.38);
-      border: 1px solid rgba(255,255,255,0.24);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 16px 42px rgba(0,0,0,0.28);
-      color: #fff;
-      text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease;
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 46px rgba(0,0,0,.28);
+      transition: .2s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      background: rgba(0,0,0,0.52);
+      background: rgba(0,0,0,.52);
     }
 
-    .icon {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
+    .icon { font-size: 27px; margin-bottom: 10px; }
 
     .card h2 {
       margin: 0 0 8px;
@@ -147,57 +134,36 @@
     .card p {
       margin: 0;
       font-size: 14px;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+      opacity: .9;
     }
 
-    .footer-note {
+    .footer {
       max-width: 1180px;
       margin: 18px auto 0;
       display: flex;
       justify-content: space-between;
       gap: 20px;
       font-size: 13px;
-      color: rgba(255,255,255,0.78);
+      opacity: .82;
+      text-shadow: 0 3px 14px rgba(0,0,0,.55);
     }
 
     @media (max-width: 900px) {
-      .hero {
-        background-size: cover;
-        background-position: center top;
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .bottom-panel {
+      .nav { padding: 24px; }
+      .nav-links { display: none; }
+      .title { margin: 10vh 24px 0; }
+      .cards-wrap {
         position: relative;
-        margin-top: 34vh;
+        margin-top: 32vh;
         padding: 0 24px 36px;
       }
-
-      .nav {
-        padding: 24px;
-      }
-
-      .nav-links {
-        display: none;
-      }
+      .cards { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 560px) {
-      .center-title {
-        margin-top: 8vh;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-note {
-        flex-direction: column;
-      }
+      .cards { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; }
     }
   </style>
 </head>
@@ -215,47 +181,48 @@
       </div>
     </nav>
 
-    <section class="center-title">
-      <div class="small">WELCOME TO</div>
+    <section class="title">
       <h1>SingaporeOG · Kevin</h1>
       <div class="subtitle">生活 · 旅行 · 写作 · 成长</div>
 
       <div class="quote">
         生活总是值得记录，世界也总是盛大而灿烂，愿大家热爱生活，热爱世界，要一直坚定往前走！
-        <br>
+      </div>
+
+      <div class="quote-en">
         Life is always worth recording. The world remains vast and brilliant.
         May we love life, love the world, and keep moving forward with courage.
       </div>
     </section>
 
-    <section class="bottom-panel">
+    <section class="cards-wrap">
       <div class="cards">
         <a class="card" href="#">
           <div class="icon">🌿</div>
           <h2>Life / 生活</h2>
-          <p>记录日常、心情、片刻，以及那些微小但真实的生活纹理。</p>
+          <p>日常、心情、片刻，以及那些值得被保存的小事。</p>
         </a>
 
         <a class="card" href="#">
           <div class="icon">✈️</div>
           <h2>Travel / 旅行</h2>
-          <p>走过的路、看过的风景、吃过的饭，以及旅途中的意外。</p>
+          <p>走过的路、看过的风景、吃过的饭和偶然。</p>
         </a>
 
         <a class="card" href="#">
           <div class="icon">✍️</div>
           <h2>Writing / 写作</h2>
-          <p>小说、人物、灵感、废稿，以及故事成形之前的火花。</p>
+          <p>小说、人物、灵感、废稿，以及故事的火花。</p>
         </a>
 
         <a class="card" href="#">
           <div class="icon">🧭</div>
           <h2>About / 关于</h2>
-          <p>关于我，关于这个网站，也关于仍在路上的一些想法。</p>
+          <p>关于我，关于这个网站，也关于仍在路上的想法。</p>
         </a>
       </div>
 
-      <div class="footer-note">
+      <div class="footer">
         <span>© SingaporeOG · Kevin</span>
         <span>Contact: 3088421626@qq.com / kevinsgk@outlook.com</span>
       </div>
