@@ -153,34 +153,37 @@
     @media (max-width: 900px) {
 
   .hero {
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0.08) 45%,
-        rgba(0,0,0,0.35) 100%
-      ),
-      url("England3.jpg");
-
+    background-image: url("Spain.jpg");
     background-size: cover;
     background-position: center center;
+  }
+
+  .nav {
+    padding: 20px;
   }
 
   .title {
     margin: 7vh 20px 0;
     padding: 0;
-    background: none;
+
+    background: transparent;
     backdrop-filter: none;
+    border-radius: 0;
+
     max-width: none;
-    text-shadow: 0 4px 16px rgba(0,0,0,.45);
+
+    text-shadow:
+      0 2px 8px rgba(0,0,0,.35),
+      0 6px 18px rgba(0,0,0,.25);
   }
 
   .title h1 {
     font-size: 52px;
+    line-height: 1;
   }
 
   .subtitle {
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 1px;
   }
 
@@ -191,17 +194,13 @@
 
   .quote-en {
     font-size: 13px;
-    opacity: .88;
-  }
-
-  .nav {
-    padding: 22px;
+    opacity: .92;
   }
 
   .cards-wrap {
     position: relative;
-    margin-top: 42vh;
-    padding: 0 20px 36px;
+    margin-top: 46vh;
+    padding: 0 20px 30px;
   }
 
   .cards {
@@ -209,11 +208,10 @@
   }
 }
 
-    @media (max-width: 560px) {
+@media (max-width: 560px) {
 
   .title h1 {
     font-size: 42px;
-    line-height: 1;
   }
 
   .subtitle {
@@ -229,7 +227,7 @@
   }
 
   .cards-wrap {
-    margin-top: 45vh;
+    margin-top: 50vh;
   }
 
   .cards {
