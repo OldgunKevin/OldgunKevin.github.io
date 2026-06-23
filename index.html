@@ -1,35 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin's Corner</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin's Corner</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f6f1e8;
+      color: #2b2520;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    .hero {
+      padding: 60px 0;
+      border-bottom: 1px solid #d8cbb8;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #6f6256;
+      max-width: 650px;
+    }
+
+    nav {
+      margin: 35px 0;
+    }
+
+    nav a {
+      margin-right: 22px;
+      color: #8a4f2a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 48px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: #fffaf2;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(80, 55, 30, 0.08);
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 70px;
+      color: #8b8075;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to Kevin's Corner</h1>
+  <div class="container">
+    <div class="hero">
+      <h1>Kevin's Corner</h1>
+      <p class="subtitle">
+        A small corner of the internet for recording life, travel, writing,
+        thoughts, and the things I enjoy.
+      </p>
 
-    <p>
-        A small corner of the internet for recording life,
-        travel, writing, thoughts and the things I enjoy.
-    </p>
+      <nav>
+        <a href="#life">Life</a>
+        <a href="#travel">Travel</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
 
-    <hr>
+    <section id="life">
+      <h2>Life</h2>
+      <div class="card">
+        <p>
+          生活走得很快，很多瞬间如果不写下来，就像风从袖口钻过去，
+          当时觉得凉，过后却找不到形状。
+        </p>
+      </div>
+    </section>
 
-    <h2>About</h2>
+    <section id="travel">
+      <h2>Travel</h2>
+      <div class="card">
+        <p>
+          Some places are not only destinations, but also fragments of memory:
+          streets, meals, weather, stations, and small accidents along the way.
+        </p>
+      </div>
+    </section>
 
-    <p>
-        Hi, I'm Kevin.
-        This website is a place where I document my life,
-        travels, projects and creative work.
-    </p>
+    <section id="writing">
+      <h2>Writing</h2>
+      <div class="card">
+        <p>
+          Here I keep notes about stories, characters, ideas, and the strange
+          sparks that appear before they become something larger.
+        </p>
+      </div>
+    </section>
 
-    <h2>Contact</h2>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>3088421626@qq.com</p>
+        <p>kevinsgk@outlook.com</p>
+      </div>
+    </section>
 
-    <p>
-        3088421626@qq.com
-        <br>
-        kevinsgk@outlook.com
-    </p>
-
+    <footer>
+      © OldgunKevin. Notes on life, travel, writing, and the world around me.
+    </footer>
+  </div>
 </body>
 </html>
