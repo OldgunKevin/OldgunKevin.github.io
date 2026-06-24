@@ -6,202 +6,169 @@
 <title>Travel / 旅行 | SingaporeOG · Kevin</title>
 
 <style>
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  color:white;
+  min-height:100vh;
+  background:
+    linear-gradient(to right,rgba(0,0,0,.55),rgba(0,0,0,.14) 55%,rgba(0,0,0,.04)),
+    linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.08) 45%,rgba(0,0,0,.5)),
+    url("TravelDesktop.jpg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none}
 
-body {
-  margin: 0;
-  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-  background: linear-gradient(135deg, #071211, #13231f);
-  color: white;
+header{
+  padding:30px 6vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{font-size:22px;font-weight:800;text-shadow:0 3px 14px rgba(0,0,0,.5)}
+.back{font-size:14px;color:rgba(255,255,255,.82)}
+
+.hero{
+  padding:45px 6vw 20px;
+}
+.hero h1{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(52px,7vw,88px);
+  color:#f4d28f;
+  text-shadow:0 4px 20px rgba(0,0,0,.45);
+}
+.subtitle{
+  margin-top:18px;
+  max-width:560px;
+  line-height:1.8;
+  color:rgba(255,255,255,.86);
+  text-shadow:0 3px 14px rgba(0,0,0,.45);
 }
 
-a { color: inherit; text-decoration: none; }
+.timeline{
+  width:min(850px,88vw);
+  margin:30px 0 80px 6vw;
+  padding:18px 0;
+}
+.year-block{
+  margin-bottom:14px;
+  border-radius:24px;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.13);
+  backdrop-filter:blur(5px);
+  overflow:hidden;
+}
+summary{
+  cursor:pointer;
+  list-style:none;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+summary::-webkit-details-marker{display:none}
+.year{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:42px;
+  color:#f4d28f;
+  min-width:110px;
+}
+.year-note{
+  color:rgba(255,255,255,.62);
+}
+.arrow{
+  margin-left:auto;
+  color:#f4d28f;
+}
+details[open] .arrow{transform:rotate(90deg)}
 
-header {
-  padding: 30px 7vw;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+.months{
+  padding:0 24px 24px 152px;
+}
+.month-row{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:12px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.month{
+  min-width:86px;
+  color:#f4d28f;
+  font-weight:800;
+}
+.places{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 16px;
+}
+.place{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:rgba(255,255,255,.92);
+}
+.flag{
+  width:27px;
+  height:19px;
+  object-fit:cover;
+  border-radius:3px;
+  box-shadow:0 3px 8px rgba(0,0,0,.35);
+}
+.click-row{
+  transition:.2s ease;
+  border-radius:14px;
+  margin-left:-12px;
+  padding-left:12px;
+}
+.click-row:hover{
+  background:rgba(255,255,255,.08);
 }
 
-.brand { font-weight: 800; font-size: 22px; }
-.back { color: rgba(255,255,255,.7); }
-
-.hero {
-  padding: 58px 7vw 28px;
-}
-
-.hero h1 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(52px, 7vw, 86px);
-}
-
-.subtitle {
-  margin-top: 20px;
-  color: rgba(255,255,255,.72);
-  line-height: 1.8;
-}
-
-.page {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-
-.panel {
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.055);
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 22px 70px rgba(0,0,0,.25);
-}
-
-.map-wrap {
-  position: relative;
-  min-height: 540px;
-  overflow: hidden;
-}
-
-.map-title h2 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.map-title p {
-  color: rgba(255,255,255,.62);
-  line-height: 1.7;
-}
-
-.world-map {
-  margin-top: 24px;
-  opacity: .82;
-}
-
-.world-map svg {
-  width: 100%;
-  height: auto;
-}
-
-.land {
-  fill: rgba(255,255,255,.11);
-  stroke: rgba(255,255,255,.17);
-  stroke-width: 1.5;
-}
-
-.flag-pin {
-  position: absolute;
-  font-size: 24px;
-  transform: translate(-50%, -50%);
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,.55));
-}
-
-.timeline h2 {
-  margin-top: 0;
-  font-size: 34px;
-  color: #f2d49b;
-}
-
-.year-block {
-  margin-bottom: 30px;
-  padding-bottom: 26px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-
-.year-head {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  margin-bottom: 18px;
-}
-
-.year {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 40px;
-  color: #f2d49b;
-}
-
-.year-cn {
-  color: rgba(255,255,255,.55);
-}
-
-.month-card {
-  display: block;
-  margin-bottom: 14px;
-  padding: 18px;
-  border-radius: 20px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.1);
-}
-
-.month-card.clickable:hover {
-  background: rgba(255,255,255,.12);
-  transform: translateY(-3px);
-}
-
-.month-title {
-  font-weight: 800;
-  margin-bottom: 10px;
-  color: #f2d49b;
-}
-
-.flags-line {
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-.coming {
-  color: rgba(255,255,255,.45);
-  font-style: italic;
-}
-
-@media (max-width: 900px) {
-  header {
-    display: block;
-    padding: 24px;
+@media(max-width:900px){
+  body{
+    background:
+      linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.08) 35%,rgba(0,0,0,.62)),
+      url("TravelMobile.jpg");
+    background-size:cover;
+    background-position:center top;
+    background-attachment:scroll;
   }
-
-  .back {
-    display: inline-block;
-    margin-top: 14px;
+  header{
+    display:block;
+    padding:24px;
   }
-
-  .hero {
-    padding: 42px 24px 18px;
+  .back{display:inline-block;margin-top:12px}
+  .hero{padding:42px 24px 16px}
+  .hero h1{font-size:54px}
+  .subtitle{font-size:15px}
+  .timeline{
+    width:auto;
+    margin:28px 16px 60px;
   }
-
-  .page {
-    display: block;
-    padding: 16px;
+  summary{
+    padding:18px;
   }
-
-  .map-wrap {
-    min-height: auto;
-    margin-bottom: 22px;
+  .year{
+    font-size:34px;
+    min-width:82px;
   }
-
-  .world-map {
-    display: none;
+  .months{
+    padding:0 18px 20px;
   }
-
-  .flag-pin {
-    display: none;
+  .month-row{
+    display:block;
   }
-
-  .timeline h2 {
-    font-size: 30px;
+  .month{
+    display:block;
+    margin-bottom:10px;
   }
-
-  .year {
-    font-size: 34px;
-  }
-
-  .panel {
-    padding: 22px;
-    border-radius: 24px;
+  .places{
+    gap:9px 12px;
   }
 }
 </style>
@@ -222,104 +189,96 @@ header {
   </div>
 </section>
 
-<main class="page">
+<section class="timeline">
 
-<section class="panel map-wrap">
-  <div class="map-title">
-    <h2>Visited Map / 足迹地图</h2>
-    <p>Flags mark places I have been. The map is symbolic, not geographically exact.<br>国旗标记去过的地方，地图为示意图。</p>
-  </div>
-
-  <div class="world-map">
-    <svg viewBox="0 0 900 460">
-      <path class="land" d="M90 155 C150 80 270 82 330 145 C380 198 335 255 245 260 C150 265 55 235 90 155 Z"/>
-      <path class="land" d="M355 145 C430 70 565 95 625 175 C690 260 610 340 500 325 C405 315 300 240 355 145 Z"/>
-      <path class="land" d="M510 320 C590 335 625 420 565 455 C500 492 435 430 455 365 C465 335 485 322 510 320 Z"/>
-      <path class="land" d="M625 165 C705 110 820 145 840 250 C858 345 740 375 650 315 C585 270 565 205 625 165 Z"/>
-      <path class="land" d="M680 355 C755 330 835 365 845 420 C855 475 755 492 690 455 C640 425 630 375 680 355 Z"/>
-    </svg>
-  </div>
-
-  <span class="flag-pin" style="left:44%; top:34%;">🇬🇧</span>
-  <span class="flag-pin" style="left:49%; top:42%;">🇫🇷</span>
-  <span class="flag-pin" style="left:48%; top:50%;">🇪🇸</span>
-  <span class="flag-pin" style="left:54%; top:41%;">🇩🇪</span>
-  <span class="flag-pin" style="left:55%; top:54%;">🇮🇹</span>
-  <span class="flag-pin" style="left:59%; top:49%;">🇲🇪</span>
-  <span class="flag-pin" style="left:62%; top:47%;">🇷🇸</span>
-  <span class="flag-pin" style="left:60%; top:52%;">🇧🇦</span>
-  <span class="flag-pin" style="left:64%; top:59%;">🇬🇷</span>
-  <span class="flag-pin" style="left:50%; top:24%;">🇳🇴</span>
-  <span class="flag-pin" style="left:53%; top:25%;">🇸🇪</span>
-  <span class="flag-pin" style="left:57%; top:25%;">🇫🇮</span>
-  <span class="flag-pin" style="left:45%; top:62%;">🇲🇦</span>
-  <span class="flag-pin" style="left:77%; top:68%;">🇸🇬</span>
-  <span class="flag-pin" style="left:75%; top:73%;">🇲🇾</span>
-  <span class="flag-pin" style="left:73%; top:62%;">🇹🇭</span>
-  <span class="flag-pin" style="left:82%; top:43%;">🇨🇳</span>
-</section>
-
-<section class="panel timeline">
-  <h2>Timeline / 时间线</h2>
-
-  <div class="year-block">
-    <div class="year-head"><div class="year">2026</div><div class="year-cn">2026年</div></div>
-
-    <a class="month-card clickable" href="travel-2026-01.html">
-      <div class="month-title">January / 1月</div>
-      <div class="flags-line">🇲🇪 黑山 Montenegro · 🇷🇸 塞尔维亚 Serbia · 🇧🇦 波黑 Bosnia</div>
+<details class="year-block" open>
+  <summary><span class="year">2026</span><span class="year-note">2026年</span><span class="arrow">›</span></summary>
+  <div class="months">
+    <a class="month-row click-row" href="travel-2026-01.html">
+      <span class="month">Jan / 1月</span>
+      <span class="places">
+        <span class="place"><img class="flag" src="flags/me.svg">黑山 Montenegro</span>
+        <span class="place"><img class="flag" src="flags/rs.svg">塞尔维亚 Serbia</span>
+        <span class="place"><img class="flag" src="flags/ba.svg">波黑 Bosnia</span>
+      </span>
     </a>
-
-    <div class="month-card">
-      <div class="month-title">February / 2月</div>
-      <div class="flags-line">🇪🇸 西班牙 Spain · 🇦🇩 安道尔 Andorra · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
-    </div>
-
-    <div class="month-card">
-      <div class="month-title">March / 3月</div>
-      <div class="flags-line">🇬🇷 希腊 Greece · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
-    </div>
-
-    <div class="month-card">
-      <div class="month-title">April / 4月</div>
-      <div class="flags-line">🇲🇦 摩洛哥 Morocco · 🇬🇮 直布罗陀 Gibraltar · 🇪🇸 西班牙 Spain · 🇵🇹 葡萄牙 Portugal</div>
-    </div>
-
-    <div class="month-card">
-      <div class="month-title">June / 6月</div>
-      <div class="flags-line">🇫🇷 法国 France · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
-    </div>
+    <div class="month-row"><span class="month">Feb / 2月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/es.svg">西班牙 Spain</span>
+      <span class="place"><img class="flag" src="flags/ad.svg">安道尔 Andorra</span>
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+    </span></div>
+    <div class="month-row"><span class="month">Mar / 3月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/gr.svg">希腊 Greece</span>
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+    </span></div>
+    <div class="month-row"><span class="month">Apr / 4月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/ma.svg">摩洛哥 Morocco</span>
+      <span class="place"><img class="flag" src="flags/gi.svg">直布罗陀 Gibraltar</span>
+      <span class="place"><img class="flag" src="flags/es.svg">西班牙 Spain</span>
+      <span class="place"><img class="flag" src="flags/pt.svg">葡萄牙 Portugal</span>
+    </span></div>
+    <div class="month-row"><span class="month">Jun / 6月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/fr.svg">法国 France</span>
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+    </span></div>
   </div>
+</details>
 
-  <div class="year-block">
-    <div class="year-head"><div class="year">2025</div><div class="year-cn">2025年</div></div>
-    <div class="month-card"><div class="month-title">April / 4月</div><div class="flags-line">🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 Scotland · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div></div>
-    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇸🇬 新加坡 Singapore · 🇲🇾 马来西亚 Malaysia</div></div>
-    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇹🇭 泰国 Thailand</div></div>
+<details class="year-block">
+  <summary><span class="year">2025</span><span class="year-note">2025年</span><span class="arrow">›</span></summary>
+  <div class="months">
+    <div class="month-row"><span class="month">Apr / 4月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/gb-sct.svg">苏格兰 Scotland</span>
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+    </span></div>
+    <div class="month-row"><span class="month">Jun / 6月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/sg.svg">新加坡 Singapore</span>
+      <span class="place"><img class="flag" src="flags/my.svg">马来西亚 Malaysia</span>
+    </span></div>
+    <div class="month-row"><span class="month">Jul / 7月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/th.svg">泰国 Thailand</span>
+    </span></div>
   </div>
+</details>
 
-  <div class="year-block"><div class="year-head"><div class="year">2024</div><div class="year-cn">2024年</div></div><div class="coming">Coming Soon / 待补充</div></div>
-  <div class="year-block"><div class="year-head"><div class="year">2023</div><div class="year-cn">2023年</div></div><div class="coming">Coming Soon / 待补充</div></div>
-  <div class="year-block"><div class="year-head"><div class="year">2022</div><div class="year-cn">2022年</div></div><div class="coming">Coming Soon / 待补充</div></div>
+<details class="year-block"><summary><span class="year">2024</span><span class="year-note">Coming Soon / 待补充</span><span class="arrow">›</span></summary></details>
+<details class="year-block"><summary><span class="year">2023</span><span class="year-note">Coming Soon / 待补充</span><span class="arrow">›</span></summary></details>
+<details class="year-block"><summary><span class="year">2022</span><span class="year-note">Coming Soon / 待补充</span><span class="arrow">›</span></summary></details>
 
-  <div class="year-block">
-    <div class="year-head"><div class="year">2017</div><div class="year-cn">2017年</div></div>
-    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇳🇴 挪威 Norway · 🇫🇮 芬兰 Finland · 🇸🇪 瑞典 Sweden</div></div>
+<details class="year-block">
+  <summary><span class="year">2017</span><span class="year-note">2017年</span><span class="arrow">›</span></summary>
+  <div class="months">
+    <div class="month-row"><span class="month">Jul / 7月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/no.svg">挪威 Norway</span>
+      <span class="place"><img class="flag" src="flags/fi.svg">芬兰 Finland</span>
+      <span class="place"><img class="flag" src="flags/se.svg">瑞典 Sweden</span>
+    </span></div>
   </div>
+</details>
 
-  <div class="year-block">
-    <div class="year-head"><div class="year">2015</div><div class="year-cn">2015年</div></div>
-    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇮🇹 意大利 Italy</div></div>
-    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England · 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 Scotland</div></div>
+<details class="year-block">
+  <summary><span class="year">2015</span><span class="year-note">2015年</span><span class="arrow">›</span></summary>
+  <div class="months">
+    <div class="month-row"><span class="month">Jun / 6月</span><span class="places"><span class="place"><img class="flag" src="flags/it.svg">意大利 Italy</span></span></div>
+    <div class="month-row"><span class="month">Jul / 7月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+      <span class="place"><img class="flag" src="flags/gb-sct.svg">苏格兰 Scotland</span>
+    </span></div>
   </div>
+</details>
 
-  <div class="year-block">
-    <div class="year-head"><div class="year">2014</div><div class="year-cn">2014年</div></div>
-    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇫🇷 法国 France</div></div>
-    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇩🇪 德国 Germany · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div></div>
+<details class="year-block">
+  <summary><span class="year">2014</span><span class="year-note">2014年</span><span class="arrow">›</span></summary>
+  <div class="months">
+    <div class="month-row"><span class="month">Jun / 6月</span><span class="places"><span class="place"><img class="flag" src="flags/fr.svg">法国 France</span></span></div>
+    <div class="month-row"><span class="month">Jul / 7月</span><span class="places">
+      <span class="place"><img class="flag" src="flags/de.svg">德国 Germany</span>
+      <span class="place"><img class="flag" src="flags/gb-eng.svg">英格兰 England</span>
+    </span></div>
   </div>
+</details>
+
 </section>
 
-</main>
 </body>
 </html>
