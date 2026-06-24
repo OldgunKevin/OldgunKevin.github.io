@@ -1,406 +1,325 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel / 旅行 | SingaporeOG · Kevin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Travel / 旅行 | SingaporeOG · Kevin</title>
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(180,140,80,.18), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(80,130,150,.16), transparent 30%),
-        linear-gradient(135deg, #071211, #10201d 45%, #050908);
-      color: #fff;
-      min-height: 100vh;
-    }
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  background: linear-gradient(135deg, #071211, #13231f);
+  color: white;
+}
 
-    a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; }
 
-    header {
-      padding: 30px 7vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+header {
+  padding: 30px 7vw;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
 
-    .brand {
-      font-size: 22px;
-      font-weight: 800;
-    }
+.brand { font-weight: 800; font-size: 22px; }
+.back { color: rgba(255,255,255,.7); }
 
-    .back {
-      color: rgba(255,255,255,.75);
-      font-size: 14px;
-    }
+.hero {
+  padding: 58px 7vw 28px;
+}
 
-    .hero {
-      padding: 58px 7vw 24px;
-    }
+.hero h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 7vw, 86px);
+}
 
-    .hero h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(52px, 7vw, 86px);
-      line-height: .95;
-    }
+.subtitle {
+  margin-top: 20px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.8;
+}
 
-    .subtitle {
-      margin-top: 22px;
-      max-width: 720px;
-      color: rgba(255,255,255,.75);
-      line-height: 1.8;
-      font-size: 17px;
-    }
+.page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
 
-    .page {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 26px 24px 80px;
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 28px;
-    }
+.panel {
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.055);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 22px 70px rgba(0,0,0,.25);
+}
 
-    .map-card, .timeline {
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.055);
-      border-radius: 30px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 22px 70px rgba(0,0,0,.28);
-    }
+.map-wrap {
+  position: relative;
+  min-height: 540px;
+  overflow: hidden;
+}
 
-    .map-card {
-      position: relative;
-      min-height: 650px;
-      overflow: hidden;
-      padding: 28px;
-    }
+.map-title h2 {
+  margin: 0;
+  font-size: 30px;
+}
 
-    .map-title h2 {
-      margin: 0;
-      font-size: 28px;
-    }
+.map-title p {
+  color: rgba(255,255,255,.62);
+  line-height: 1.7;
+}
 
-    .map-title p {
-      margin: 8px 0 0;
-      color: rgba(255,255,255,.62);
-      line-height: 1.6;
-    }
+.world-map {
+  margin-top: 24px;
+  opacity: .82;
+}
 
-    .world {
-      position: absolute;
-      inset: 110px 28px 28px;
-      opacity: .9;
-    }
+.world-map svg {
+  width: 100%;
+  height: auto;
+}
 
-    .world svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+.land {
+  fill: rgba(255,255,255,.11);
+  stroke: rgba(255,255,255,.17);
+  stroke-width: 1.5;
+}
 
-    .land {
-      fill: rgba(255,255,255,.105);
-      stroke: rgba(255,255,255,.13);
-      stroke-width: 2;
-    }
+.flag-pin {
+  position: absolute;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.55));
+}
 
-    .pin {
-      position: absolute;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transform: translate(-50%, -100%);
-    }
+.timeline h2 {
+  margin-top: 0;
+  font-size: 34px;
+  color: #f2d49b;
+}
 
-    .pin .flag {
-      font-size: 25px;
-      line-height: 1;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,.5));
-    }
+.year-block {
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
 
-    .pin .line {
-      width: 1px;
-      height: 72px;
-      margin-top: 7px;
-      background: linear-gradient(to bottom, #f0c36a, rgba(240,195,106,.15));
-    }
+.year-head {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
 
-    .pin .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #f0c36a;
-      box-shadow: 0 0 12px rgba(240,195,106,.9);
-    }
+.year {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  color: #f2d49b;
+}
 
-    .timeline {
-      padding: 28px;
-    }
+.year-cn {
+  color: rgba(255,255,255,.55);
+}
 
-    .year-block {
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255,255,255,.09);
-    }
+.month-card {
+  display: block;
+  margin-bottom: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+}
 
-    .year-block:first-child { padding-top: 0; }
-    .year-block:last-child { border-bottom: none; }
+.month-card.clickable:hover {
+  background: rgba(255,255,255,.12);
+  transform: translateY(-3px);
+}
 
-    .year-head {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+.month-title {
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #f2d49b;
+}
 
-    .year {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 38px;
-      color: #f2d49b;
-    }
+.flags-line {
+  font-size: 17px;
+  line-height: 1.8;
+}
 
-    .year-cn {
-      color: rgba(255,255,255,.58);
-      font-size: 14px;
-    }
+.coming {
+  color: rgba(255,255,255,.45);
+  font-style: italic;
+}
 
-    .flag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
+@media (max-width: 900px) {
+  header {
+    display: block;
+    padding: 24px;
+  }
 
-    .place {
-      min-width: 92px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.09);
-    }
+  .back {
+    display: inline-block;
+    margin-top: 14px;
+  }
 
-    .place .emoji {
-      font-size: 25px;
-      display: block;
-      margin-bottom: 6px;
-    }
+  .hero {
+    padding: 42px 24px 18px;
+  }
 
-    .place .en {
-      font-size: 13px;
-      color: rgba(255,255,255,.88);
-      line-height: 1.35;
-    }
+  .page {
+    display: block;
+    padding: 16px;
+  }
 
-    .place .cn {
-      font-size: 12px;
-      color: rgba(255,255,255,.56);
-      line-height: 1.35;
-    }
+  .map-wrap {
+    min-height: auto;
+    margin-bottom: 22px;
+  }
 
-    .coming {
-      color: rgba(255,255,255,.45);
-      font-style: italic;
-    }
+  .world-map {
+    display: none;
+  }
 
-    .open-link {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(240,195,106,.16);
-      color: #f2d49b;
-      font-weight: 800;
-      font-size: 13px;
-    }
+  .flag-pin {
+    display: none;
+  }
 
-    @media (max-width: 900px) {
-      header {
-        padding: 24px;
-        display: block;
-      }
+  .timeline h2 {
+    font-size: 30px;
+  }
 
-      .back {
-        display: inline-block;
-        margin-top: 14px;
-      }
+  .year {
+    font-size: 34px;
+  }
 
-      .hero {
-        padding: 42px 24px 18px;
-      }
-
-      .subtitle {
-        font-size: 15px;
-      }
-
-      .page {
-        display: block;
-        padding: 18px 16px 60px;
-      }
-
-      .map-card {
-        min-height: 500px;
-        padding: 22px;
-        margin-bottom: 22px;
-        border-radius: 24px;
-      }
-
-      .world {
-        inset: 105px 10px 18px;
-      }
-
-      .pin .flag {
-        font-size: 21px;
-      }
-
-      .pin .line {
-        height: 48px;
-      }
-
-      .timeline {
-        padding: 22px;
-        border-radius: 24px;
-      }
-
-      .year {
-        font-size: 32px;
-      }
-
-      .place {
-        min-width: calc(50% - 7px);
-      }
-    }
-  </style>
+  .panel {
+    padding: 22px;
+    border-radius: 24px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="brand">SingaporeOG · Kevin</div>
-    <a class="back" href="index.html">← Back Home / 返回首页</a>
-  </header>
 
-  <section class="hero">
-    <h1>Travel / 旅行</h1>
-    <div class="subtitle">
-      Some places are destinations. Some become memories.
-      <br>
-      有些地方只是目的地，有些地方会留在记忆里。
+<header>
+  <div class="brand">SingaporeOG · Kevin</div>
+  <a class="back" href="index.html">← Back Home / 返回首页</a>
+</header>
+
+<section class="hero">
+  <h1>Travel / 旅行</h1>
+  <div class="subtitle">
+    Some places are destinations. Some become memories.<br>
+    有些地方只是目的地，有些地方会留在记忆里。
+  </div>
+</section>
+
+<main class="page">
+
+<section class="panel map-wrap">
+  <div class="map-title">
+    <h2>Visited Map / 足迹地图</h2>
+    <p>Flags mark places I have been. The map is symbolic, not geographically exact.<br>国旗标记去过的地方，地图为示意图。</p>
+  </div>
+
+  <div class="world-map">
+    <svg viewBox="0 0 900 460">
+      <path class="land" d="M90 155 C150 80 270 82 330 145 C380 198 335 255 245 260 C150 265 55 235 90 155 Z"/>
+      <path class="land" d="M355 145 C430 70 565 95 625 175 C690 260 610 340 500 325 C405 315 300 240 355 145 Z"/>
+      <path class="land" d="M510 320 C590 335 625 420 565 455 C500 492 435 430 455 365 C465 335 485 322 510 320 Z"/>
+      <path class="land" d="M625 165 C705 110 820 145 840 250 C858 345 740 375 650 315 C585 270 565 205 625 165 Z"/>
+      <path class="land" d="M680 355 C755 330 835 365 845 420 C855 475 755 492 690 455 C640 425 630 375 680 355 Z"/>
+    </svg>
+  </div>
+
+  <span class="flag-pin" style="left:44%; top:34%;">🇬🇧</span>
+  <span class="flag-pin" style="left:49%; top:42%;">🇫🇷</span>
+  <span class="flag-pin" style="left:48%; top:50%;">🇪🇸</span>
+  <span class="flag-pin" style="left:54%; top:41%;">🇩🇪</span>
+  <span class="flag-pin" style="left:55%; top:54%;">🇮🇹</span>
+  <span class="flag-pin" style="left:59%; top:49%;">🇲🇪</span>
+  <span class="flag-pin" style="left:62%; top:47%;">🇷🇸</span>
+  <span class="flag-pin" style="left:60%; top:52%;">🇧🇦</span>
+  <span class="flag-pin" style="left:64%; top:59%;">🇬🇷</span>
+  <span class="flag-pin" style="left:50%; top:24%;">🇳🇴</span>
+  <span class="flag-pin" style="left:53%; top:25%;">🇸🇪</span>
+  <span class="flag-pin" style="left:57%; top:25%;">🇫🇮</span>
+  <span class="flag-pin" style="left:45%; top:62%;">🇲🇦</span>
+  <span class="flag-pin" style="left:77%; top:68%;">🇸🇬</span>
+  <span class="flag-pin" style="left:75%; top:73%;">🇲🇾</span>
+  <span class="flag-pin" style="left:73%; top:62%;">🇹🇭</span>
+  <span class="flag-pin" style="left:82%; top:43%;">🇨🇳</span>
+</section>
+
+<section class="panel timeline">
+  <h2>Timeline / 时间线</h2>
+
+  <div class="year-block">
+    <div class="year-head"><div class="year">2026</div><div class="year-cn">2026年</div></div>
+
+    <a class="month-card clickable" href="travel-2026-01.html">
+      <div class="month-title">January / 1月</div>
+      <div class="flags-line">🇲🇪 黑山 Montenegro · 🇷🇸 塞尔维亚 Serbia · 🇧🇦 波黑 Bosnia</div>
+    </a>
+
+    <div class="month-card">
+      <div class="month-title">February / 2月</div>
+      <div class="flags-line">🇪🇸 西班牙 Spain · 🇦🇩 安道尔 Andorra · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
     </div>
-  </section>
 
-  <main class="page">
-    <section class="map-card">
-      <div class="map-title">
-        <h2>Visited Map / 足迹地图</h2>
-        <p>Flags mark places I have been. The map is symbolic, not geographically exact.<br>国旗标记去过的地方，地图为示意图。</p>
-      </div>
+    <div class="month-card">
+      <div class="month-title">March / 3月</div>
+      <div class="flags-line">🇬🇷 希腊 Greece · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
+    </div>
 
-      <div class="world">
-        <svg viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet">
-          <path class="land" d="M95 170 C150 80, 265 70, 315 130 C365 185, 310 240, 245 245 C170 252, 75 240, 95 170 Z"></path>
-          <path class="land" d="M340 155 C415 70, 535 95, 590 160 C645 230, 590 305, 505 305 C415 305, 290 250, 340 155 Z"></path>
-          <path class="land" d="M495 315 C555 325, 615 385, 585 455 C545 520, 460 490, 445 415 C435 360, 455 325, 495 315 Z"></path>
-          <path class="land" d="M610 160 C700 100, 810 145, 825 240 C842 340, 735 365, 655 315 C590 275, 555 205, 610 160 Z"></path>
-          <path class="land" d="M680 375 C740 350, 820 375, 835 430 C850 488, 760 500, 700 470 C650 445, 635 395, 680 375 Z"></path>
-        </svg>
-      </div>
+    <div class="month-card">
+      <div class="month-title">April / 4月</div>
+      <div class="flags-line">🇲🇦 摩洛哥 Morocco · 🇬🇮 直布罗陀 Gibraltar · 🇪🇸 西班牙 Spain · 🇵🇹 葡萄牙 Portugal</div>
+    </div>
 
-      <div class="pin" style="left:42%; top:31%;"><span class="flag">🇬🇧</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:48%; top:38%;"><span class="flag">🇫🇷</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:50%; top:43%;"><span class="flag">🇪🇸</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:54%; top:40%;"><span class="flag">🇩🇪</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:55%; top:49%;"><span class="flag">🇮🇹</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:58%; top:44%;"><span class="flag">🇲🇪</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:61%; top:42%;"><span class="flag">🇷🇸</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:59.5%; top:47%;"><span class="flag">🇧🇦</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:63%; top:52%;"><span class="flag">🇬🇷</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:48%; top:22%;"><span class="flag">🇳🇴</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:52%; top:23%;"><span class="flag">🇸🇪</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:56%; top:24%;"><span class="flag">🇫🇮</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:46%; top:55%;"><span class="flag">🇲🇦</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:78%; top:62%;"><span class="flag">🇸🇬</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:76%; top:68%;"><span class="flag">🇲🇾</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:74%; top:58%;"><span class="flag">🇹🇭</span><span class="line"></span><span class="dot"></span></div>
-      <div class="pin" style="left:82%; top:43%;"><span class="flag">🇨🇳</span><span class="line"></span><span class="dot"></span></div>
-    </section>
+    <div class="month-card">
+      <div class="month-title">June / 6月</div>
+      <div class="flags-line">🇫🇷 法国 France · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div>
+    </div>
+  </div>
 
-    <section class="timeline">
-      <div class="year-block">
-        <div class="year-head"><div class="year">2026</div><div class="year-cn">/ 2026年</div></div>
-        <div class="flag-row">
-          <div class="place"><span class="emoji">🇲🇪</span><div class="en">Montenegro</div><div class="cn">黑山</div></div>
-          <div class="place"><span class="emoji">🇧🇦</span><div class="en">Bosnia</div><div class="cn">波黑</div></div>
-          <div class="place"><span class="emoji">🇷🇸</span><div class="en">Serbia</div><div class="cn">塞尔维亚</div></div>
-          <div class="place"><span class="emoji">🇫🇷</span><div class="en">France</div><div class="cn">法国</div></div>
-          <div class="place"><span class="emoji">🇦🇩</span><div class="en">Andorra</div><div class="cn">安道尔</div></div>
-          <div class="place"><span class="emoji">🇲🇦</span><div class="en">Morocco</div><div class="cn">摩洛哥</div></div>
-          <div class="place"><span class="emoji">🇪🇸</span><div class="en">Spain</div><div class="cn">西班牙</div></div>
-          <div class="place"><span class="emoji">🇵🇹</span><div class="en">Portugal</div><div class="cn">葡萄牙</div></div>
-          <div class="place"><span class="emoji">🇬🇮</span><div class="en">Gibraltar</div><div class="cn">直布罗陀</div></div>
-          <div class="place"><span class="emoji">🇬🇷</span><div class="en">Greece</div><div class="cn">希腊</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="en">England ×3</div><div class="cn">英格兰</div></div>
-        </div>
-        <a class="open-link" href="travel-2026-01.html">Open January Journey →</a>
-      </div>
+  <div class="year-block">
+    <div class="year-head"><div class="year">2025</div><div class="year-cn">2025年</div></div>
+    <div class="month-card"><div class="month-title">April / 4月</div><div class="flags-line">🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 Scotland · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div></div>
+    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇸🇬 新加坡 Singapore · 🇲🇾 马来西亚 Malaysia</div></div>
+    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇹🇭 泰国 Thailand</div></div>
+  </div>
 
-      <div class="year-block">
-        <div class="year-head"><div class="year">2025</div><div class="year-cn">/ 2025年</div></div>
-        <div class="flag-row">
-          <div class="place"><span class="emoji">🇸🇬</span><div class="en">June · Singapore</div><div class="cn">6月 · 新加坡</div></div>
-          <div class="place"><span class="emoji">🇲🇾</span><div class="en">June · Malaysia</div><div class="cn">6月 · 马来西亚</div></div>
-          <div class="place"><span class="emoji">🇹🇭</span><div class="en">July · Thailand</div><div class="cn">7月 · 泰国</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><div class="en">April · Scotland</div><div class="cn">4月 · 苏格兰</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="en">April · England</div><div class="cn">4月 · 英格兰</div></div>
-        </div>
-      </div>
+  <div class="year-block"><div class="year-head"><div class="year">2024</div><div class="year-cn">2024年</div></div><div class="coming">Coming Soon / 待补充</div></div>
+  <div class="year-block"><div class="year-head"><div class="year">2023</div><div class="year-cn">2023年</div></div><div class="coming">Coming Soon / 待补充</div></div>
+  <div class="year-block"><div class="year-head"><div class="year">2022</div><div class="year-cn">2022年</div></div><div class="coming">Coming Soon / 待补充</div></div>
 
-      <div class="year-block">
-        <div class="year-head"><div class="year">2024</div><div class="year-cn">/ 2024年</div></div>
-        <div class="coming">Coming Soon / 待补充</div>
-      </div>
+  <div class="year-block">
+    <div class="year-head"><div class="year">2017</div><div class="year-cn">2017年</div></div>
+    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇳🇴 挪威 Norway · 🇫🇮 芬兰 Finland · 🇸🇪 瑞典 Sweden</div></div>
+  </div>
 
-      <div class="year-block">
-        <div class="year-head"><div class="year">2023</div><div class="year-cn">/ 2023年</div></div>
-        <div class="coming">Coming Soon / 待补充</div>
-      </div>
+  <div class="year-block">
+    <div class="year-head"><div class="year">2015</div><div class="year-cn">2015年</div></div>
+    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇮🇹 意大利 Italy</div></div>
+    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England · 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 Scotland</div></div>
+  </div>
 
-      <div class="year-block">
-        <div class="year-head"><div class="year">2022</div><div class="year-cn">/ 2022年</div></div>
-        <div class="coming">Coming Soon / 待补充</div>
-      </div>
+  <div class="year-block">
+    <div class="year-head"><div class="year">2014</div><div class="year-cn">2014年</div></div>
+    <div class="month-card"><div class="month-title">June / 6月</div><div class="flags-line">🇫🇷 法国 France</div></div>
+    <div class="month-card"><div class="month-title">July / 7月</div><div class="flags-line">🇩🇪 德国 Germany · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 England</div></div>
+  </div>
+</section>
 
-      <div class="year-block">
-        <div class="year-head"><div class="year">2017</div><div class="year-cn">/ 2017年</div></div>
-        <div class="flag-row">
-          <div class="place"><span class="emoji">🇳🇴</span><div class="en">July · Norway</div><div class="cn">7月 · 挪威</div></div>
-          <div class="place"><span class="emoji">🇫🇮</span><div class="en">July · Finland</div><div class="cn">7月 · 芬兰</div></div>
-          <div class="place"><span class="emoji">🇸🇪</span><div class="en">July · Sweden</div><div class="cn">7月 · 瑞典</div></div>
-        </div>
-      </div>
-
-      <div class="year-block">
-        <div class="year-head"><div class="year">2015</div><div class="year-cn">/ 2015年</div></div>
-        <div class="flag-row">
-          <div class="place"><span class="emoji">🇮🇹</span><div class="en">June · Italy</div><div class="cn">6月 · 意大利</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="en">July · England</div><div class="cn">7月 · 英格兰</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><div class="en">July · Scotland</div><div class="cn">7月 · 苏格兰</div></div>
-        </div>
-      </div>
-
-      <div class="year-block">
-        <div class="year-head"><div class="year">2014</div><div class="year-cn">/ 2014年</div></div>
-        <div class="flag-row">
-          <div class="place"><span class="emoji">🇫🇷</span><div class="en">June · France</div><div class="cn">6月 · 法国</div></div>
-          <div class="place"><span class="emoji">🇩🇪</span><div class="en">July · Germany</div><div class="cn">7月 · 德国</div></div>
-          <div class="place"><span class="emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="en">July · England</div><div class="cn">7月 · 英格兰</div></div>
-        </div>
-      </div>
-    </section>
-  </main>
+</main>
 </body>
 </html>
