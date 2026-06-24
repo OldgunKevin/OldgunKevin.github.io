@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,79 +8,190 @@
 
 <style>
 
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 body{
-    margin:0;
-    font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;
-    background:#141b18;
-    color:white;
+font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+background:#0f1417;
+color:white;
 }
 
-header{
-    padding:34px 8vw;
-    background:#101713;
-}
-
-.brand{
-    font-size:22px;
-    font-weight:800;
-}
-
-.back{
-    display:inline-block;
-    margin-top:18px;
-    color:#d4d4d4;
-    text-decoration:none;
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .hero{
-    padding:80px 8vw;
+height:55vh;
+min-height:420px;
+
+background:
+linear-gradient(to bottom,
+rgba(0,0,0,.25),
+rgba(0,0,0,.55)),
+url("travel-images/montenegro2026.jpg");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:end;
+}
+
+.hero-content{
+padding:60px;
+max-width:1000px;
 }
 
 .hero h1{
-    margin:0;
-    font-size:56px;
+font-size:clamp(54px,7vw,96px);
+font-family:Georgia,serif;
+color:#f5d89f;
 }
 
-.subtitle{
-    margin-top:20px;
-    color:#c8c8c8;
-    line-height:1.8;
+.hero p{
+margin-top:12px;
+font-size:18px;
+line-height:1.8;
+color:rgba(255,255,255,.9);
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:0 24px 80px;
+.route{
+max-width:1200px;
+margin:auto;
+padding:50px 25px;
+}
+
+.route-box{
+background:#171f23;
+border-radius:24px;
+padding:28px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.route-title{
+font-size:26px;
+margin-bottom:15px;
+color:#f5d89f;
+}
+
+.route-text{
+line-height:1.9;
+color:#d4d4d4;
+}
+
+.cards{
+max-width:1200px;
+margin:0 auto 80px;
+padding:0 25px;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:28px;
+}
+
+.card{
+background:#171f23;
+border-radius:28px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+}
+
+.card-content{
+padding:24px;
 }
 
 .country{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    padding:30px;
-    margin-bottom:24px;
+font-size:32px;
+font-family:Georgia,serif;
+color:#f5d89f;
+margin-bottom:10px;
 }
 
-.country h2{
-    margin-top:0;
-    font-size:32px;
+.description{
+line-height:1.8;
+color:#d4d4d4;
+margin-bottom:20px;
+min-height:90px;
 }
 
-.city{
-    display:inline-block;
-    margin:8px;
-    padding:10px 16px;
-    border-radius:999px;
-
-    background:rgba(255,255,255,.08);
-
-    color:white;
+.score{
+display:grid;
+grid-template-columns:1fr auto;
+gap:8px;
+margin-bottom:16px;
+font-size:15px;
 }
 
-.note{
-    margin-top:60px;
-    text-align:center;
-    color:#999;
+.score-name{
+color:#cfcfcf;
+}
+
+.score-value{
+color:#f5d89f;
+font-weight:700;
+}
+
+.enter{
+display:inline-block;
+margin-top:12px;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+background:#f5d89f;
+color:#111;
+
+font-weight:700;
+}
+
+.enter:hover{
+background:white;
+}
+
+.back{
+display:inline-block;
+margin:50px 0 20px 25px;
+opacity:.8;
+}
+
+@media(max-width:900px){
+
+.hero{
+height:40vh;
+min-height:300px;
+}
+
+.hero-content{
+padding:28px;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.country{
+font-size:28px;
+}
+
 }
 
 </style>
@@ -89,72 +199,149 @@ header{
 
 <body>
 
-<header>
-    <div class="brand">SingaporeOG · Kevin</div>
-
-    <a class="back" href="travel.html">
-        ← Back to Travel / 返回旅行主页
-    </a>
-</header>
+<a class="back" href="travel.html">
+← Back to Travel
+</a>
 
 <section class="hero">
 
+<div class="hero-content">
+
 <h1>January 2026</h1>
 
-<div class="subtitle">
-
+<p>
 Montenegro · Serbia · Bosnia & Herzegovina
-
-<br><br>
-
-2026年的第一场旅行。
-
-从黑山海岸线开始，穿过塞尔维亚平原，最终抵达波黑雪中的萨拉热窝。
+<br>
+黑山 · 塞尔维亚 · 波黑
+</p>
 
 </div>
 
 </section>
 
-<div class="container">
+<section class="route">
+
+<div class="route-box">
+
+<div class="route-title">
+Route / 路线
+</div>
+
+<div class="route-text">
+
+London → Podgorica → Kotor → Budva → Bar
+→ Belgrade → Novi Sad
+→ Mostar → Sarajevo
+→ United Kingdom
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cards">
+
+<a href="travel-2026-01-montenegro.html" class="card">
+
+<img src="travel-images/montenegro2026.jpg">
+
+<div class="card-content">
 
 <div class="country">
+🇲🇪 Montenegro
+</div>
 
-<h2>🇲🇪 Montenegro</h2>
+<div class="description">
+欧洲最便宜的海岸线之一，
+风景惊艳，但交通体验堪称灾难。
+</div>
 
-<div class="city">Kotor</div>
-<div class="city">Perast</div>
-<div class="city">Budva</div>
-<div class="city">Sveti Stefan</div>
-<div class="city">Bar</div>
+<div class="score">
+<div class="score-name">Overall</div><div class="score-value">7.5</div>
+<div class="score-name">Budget</div><div class="score-value">8.5</div>
+<div class="score-name">Photogenic</div><div class="score-value">9.5</div>
+<div class="score-name">Transport</div><div class="score-value">1.0</div>
+<div class="score-name">Food</div><div class="score-value">5.0</div>
+<div class="score-name">People</div><div class="score-value">1.0</div>
+<div class="score-name">Scenery</div><div class="score-value">9.5</div>
+</div>
+
+<div class="enter">
+Enter Journey →
+</div>
 
 </div>
+
+</a>
+
+<a href="travel-2026-01-serbia.html" class="card">
+
+<img src="travel-images/serbia2026.jpg">
+
+<div class="card-content">
 
 <div class="country">
+🇷🇸 Serbia
+</div>
 
-<h2>🇷🇸 Serbia</h2>
+<div class="description">
+一个没有太多惊喜，
+也没有太多雷点的巴尔干中转站。
+</div>
 
-<div class="city">Belgrade</div>
-<div class="city">Novi Sad</div>
-<div class="city">Zemun</div>
+<div class="score">
+<div class="score-name">Overall</div><div class="score-value">7.0</div>
+<div class="score-name">Budget</div><div class="score-value">8.0</div>
+<div class="score-name">Photogenic</div><div class="score-value">5.0</div>
+<div class="score-name">Transport</div><div class="score-value">7.0</div>
+<div class="score-name">Food</div><div class="score-value">5.0</div>
+<div class="score-name">People</div><div class="score-value">3.5</div>
+<div class="score-name">Scenery</div><div class="score-value">3.0</div>
+</div>
+
+<div class="enter">
+Enter Journey →
+</div>
 
 </div>
+
+</a>
+
+<a href="travel-2026-01-bosnia.html" class="card">
+
+<img src="travel-images/bosnia2026.jpg">
+
+<div class="card-content">
 
 <div class="country">
+🇧🇦 Bosnia
+</div>
 
-<h2>🇧🇦 Bosnia & Herzegovina</h2>
+<div class="description">
+战争痕迹、奥斯曼风情与山城气质
+混杂在一起的独特国家。
+</div>
 
-<div class="city">Mostar</div>
-<div class="city">Sarajevo</div>
+<div class="score">
+<div class="score-name">Overall</div><div class="score-value">8.0</div>
+<div class="score-name">Budget</div><div class="score-value">9.0</div>
+<div class="score-name">Photogenic</div><div class="score-value">8.0</div>
+<div class="score-name">Transport</div><div class="score-value">5.5</div>
+<div class="score-name">Food</div><div class="score-value">5.5</div>
+<div class="score-name">People</div><div class="score-value">3.0</div>
+<div class="score-name">Scenery</div><div class="score-value">7.5</div>
+</div>
+
+<div class="enter">
+Enter Journey →
+</div>
 
 </div>
 
-<div class="note">
+</a>
 
-Photos, stories and travel notes coming soon.
-
-</div>
-
-</div>
+</section>
 
 </body>
 </html>
