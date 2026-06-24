@@ -1,78 +1,359 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel / 旅行 | SingaporeOG · Kevin</title>
+
   <style>
-    body { margin:0; font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif; background:#f4efe7; color:#1f261f; }
-    header { padding:34px 8vw; background:#17231b; color:white; }
-    a { color:inherit; text-decoration:none; }
-    .brand { font-weight:800; font-size:22px; }
-    .back { margin-top:18px; display:inline-block; opacity:.85; }
-    main { max-width:1050px; margin:0 auto; padding:58px 24px; }
-    h1 { font-size:46px; margin:0 0 12px; }
-    .subtitle { color:#62584f; line-height:1.8; }
-    .timeline { margin-top:42px; border-left:4px solid #9d7751; padding-left:28px; }
-    .item { background:#fffaf2; margin:0 0 24px; padding:26px; border-radius:22px; box-shadow:0 12px 34px rgba(60,40,20,.1); }
-    .item h2 { margin:0 0 10px; font-size:26px; }
-    .item p { margin:6px 0; line-height:1.7; color:#4d443d; }
-    .tag { display:inline-block; margin-top:12px; padding:7px 12px; border-radius:999px; background:#eadcc8; color:#5a3c22; font-weight:700; font-size:13px; }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(120,160,190,.22), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(210,160,90,.18), transparent 28%),
+        linear-gradient(135deg, #0e1715, #18251f 45%, #0b1110);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 32px 8vw;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 16px;
+      color: rgba(255,255,255,.78);
+      font-size: 15px;
+    }
+
+    .hero {
+      padding: 64px 8vw 34px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(48px, 7vw, 82px);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: .95;
+    }
+
+    .subtitle {
+      margin-top: 24px;
+      max-width: 720px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.85;
+      font-size: 17px;
+    }
+
+    .layout {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 24px 24px 80px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .map-panel,
+    .timeline-panel {
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+
+    .map-panel {
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .map-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .map-title h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .map-title span {
+      color: rgba(255,255,255,.62);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .route-line {
+      fill: none;
+      stroke: rgba(255,255,255,.72);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 10 9;
+    }
+
+    .route-line-main {
+      fill: none;
+      stroke: #f0b35a;
+      stroke-width: 5;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 8px rgba(240,179,90,.45));
+    }
+
+    .land {
+      fill: rgba(255,255,255,.07);
+      stroke: rgba(255,255,255,.18);
+      stroke-width: 2;
+    }
+
+    .dot {
+      fill: #f3c26b;
+      stroke: rgba(255,255,255,.9);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 8px rgba(243,194,107,.55));
+    }
+
+    .dot-muted {
+      fill: rgba(255,255,255,.35);
+      stroke: rgba(255,255,255,.55);
+      stroke-width: 2;
+    }
+
+    .label {
+      fill: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .label-small {
+      fill: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+
+    .timeline-panel {
+      padding: 28px;
+    }
+
+    .year-title {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .journey {
+      display: block;
+      padding: 24px;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .2s ease;
+    }
+
+    .journey:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.12);
+    }
+
+    .journey h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    .journey p {
+      margin: 6px 0;
+      color: rgba(255,255,255,.76);
+      line-height: 1.7;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(240,179,90,.18);
+      color: #ffd78f;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .coming {
+      opacity: .7;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 36px 20px;
+      color: rgba(255,255,255,.45);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 26px 24px;
+      }
+
+      .hero {
+        padding: 48px 24px 22px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 18px 18px 60px;
+      }
+
+      .map-panel,
+      .timeline-panel {
+        border-radius: 24px;
+      }
+
+      .map-title {
+        display: block;
+      }
+
+      .map-title span {
+        display: block;
+        text-align: left;
+        margin-top: 8px;
+      }
+
+      .label {
+        font-size: 16px;
+      }
+
+      .label-small {
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
     <div class="brand">SingaporeOG · Kevin</div>
     <a class="back" href="index.html">← Back Home / 返回首页</a>
   </header>
 
-  <main>
+  <section class="hero">
     <h1>Travel / 旅行</h1>
-    <p class="subtitle">2022 - 2026 的旅行记录。现在先从 2026 开始搭建。<br>Travel notes from 2022 to 2026. Starting with 2026 for now.</p>
+    <div class="subtitle">
+      Some places are destinations. Some become memories.
+      <br>
+      有些地方只是目的地，有些地方会留在记忆里。
+    </div>
+  </section>
 
-    <section class="timeline">
-      <div class="item">
-        <h2>2026 · January / 1月</h2>
-        <p>黑山、塞尔维亚、萨拉热窝</p>
-        <p>Montenegro, Serbia, Sarajevo</p>
+  <main class="layout">
+    <section class="map-panel">
+      <div class="map-title">
+        <h2>Route Map / 路线地图</h2>
+        <span>First journey of 2026<br>2026年的第一场旅行</span>
+      </div>
+
+      <svg viewBox="0 0 900 560" role="img" aria-label="Travel route map">
+        <path class="land" d="M100 120 C180 50, 330 60, 405 120 C485 185, 600 145, 710 195 C820 245, 820 395, 705 440 C560 500, 450 420, 350 455 C235 490, 95 415, 70 300 C55 230, 45 170, 100 120 Z"></path>
+        <path class="land" d="M575 250 C640 210, 735 235, 770 305 C810 385, 750 460, 650 455 C560 448, 505 390, 515 315 C520 285, 545 265, 575 250 Z"></path>
+
+        <path class="route-line" d="M170 130 C260 185, 310 250, 390 305"></path>
+        <path class="route-line-main" d="M390 305 C455 350, 510 325, 565 360 C605 385, 625 420, 675 430"></path>
+
+        <circle class="dot-muted" cx="170" cy="130" r="12"></circle>
+        <text class="label" x="118" y="108">UK</text>
+        <text class="label-small" x="94" y="130">United Kingdom</text>
+
+        <circle class="dot" cx="390" cy="305" r="14"></circle>
+        <text class="label" x="310" y="286">Montenegro</text>
+        <text class="label-small" x="318" y="309">Kotor · Budva · Bar</text>
+
+        <circle class="dot" cx="565" cy="360" r="14"></circle>
+        <text class="label" x="590" y="355">Serbia</text>
+        <text class="label-small" x="590" y="378">Belgrade · Novi Sad</text>
+
+        <circle class="dot" cx="675" cy="430" r="14"></circle>
+        <text class="label" x="605" y="475">Bosnia</text>
+        <text class="label-small" x="606" y="497">Mostar · Sarajevo</text>
+
+        <text class="label-small" x="54" y="525">A stylized travel map, not geographically exact.</text>
+        <text class="label-small" x="54" y="545">示意路线图，并非严格地理地图。</text>
+      </svg>
+    </section>
+
+    <section class="timeline-panel">
+      <div class="year-title">2026</div>
+
+      <a class="journey" href="travel-2026-01.html">
+        <h3>January / 1月</h3>
+        <p>Montenegro · Serbia · Bosnia & Herzegovina</p>
+        <p>黑山 · 塞尔维亚 · 波黑</p>
+        <span class="tag">Open Journey →</span>
+      </a>
+
+      <div class="journey coming">
+        <h3>February / 2月</h3>
+        <p>Spain · Andorra</p>
+        <p>西班牙 · 安道尔</p>
         <span class="tag">Coming Soon</span>
       </div>
 
-      <div class="item">
-        <h2>2026 · February / 2月</h2>
-        <p>西班牙、安道尔</p>
-        <p>Spain, Andorra</p>
-        <span class="tag">Coming Soon</span>
-      </div>
-
-      <div class="item">
-        <h2>2026 · March / 3月</h2>
-        <p>希腊</p>
+      <div class="journey coming">
+        <h3>March / 3月</h3>
         <p>Greece</p>
+        <p>希腊</p>
         <span class="tag">Coming Soon</span>
       </div>
 
-      <div class="item">
-        <h2>2026 · April / 4月</h2>
-        <p>摩洛哥、直布罗陀、西班牙、葡萄牙</p>
-        <p>Morocco, Gibraltar, Spain, Portugal</p>
+      <div class="journey coming">
+        <h3>April / 4月</h3>
+        <p>Morocco · Gibraltar · Spain · Portugal</p>
+        <p>摩洛哥 · 直布罗陀 · 西班牙 · 葡萄牙</p>
         <span class="tag">Coming Soon</span>
       </div>
 
-      <div class="item">
-        <h2>2026 · May / 5月</h2>
-        <p>摆烂</p>
+      <div class="journey coming">
+        <h3>May / 5月</h3>
         <p>Resting Month</p>
+        <p>摆烂月</p>
         <span class="tag">Coming Soon</span>
       </div>
 
-      <div class="item">
-        <h2>2026 · June / 6月</h2>
-        <p>法国</p>
+      <div class="journey coming">
+        <h3>June / 6月</h3>
         <p>France</p>
+        <p>法国</p>
         <span class="tag">Coming Soon</span>
       </div>
     </section>
   </main>
+
+  <div class="footer">© SingaporeOG · Kevin</div>
 </body>
 </html>
